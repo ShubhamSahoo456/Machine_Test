@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import react from 'react';
+import {Switch ,Route} from 'react-router-dom';
+import Dashboard from './Components/Dashboard';
+import Navbar from './Components/Navbar';
+import Register from './Components/Register';
+import Login from './Components/Login';
+import Error from './Components/Error';
+import Adduser from './Components/Adduser';
+import Edituser from './Components/EditUser';
+import '../node_modules/bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = ()=>{
+
+    return(
+        <>
+            <Navbar />
+            <Switch>
+                <Route exact path="/" component={Register}/>
+                <Route exact path="/login" component={Login}/>
+                <Route exact path="/dashboard" component={Dashboard}/>
+                <Route exact path="/dashboard/adduser" component={Adduser}/>
+                <Route exact path="/dashboard/adduser/:name" component={Edituser}/>
+                <Route component={Error}/>
+            </Switch>
+        </>
+    )
 }
 
 export default App;
